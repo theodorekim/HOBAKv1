@@ -1,0 +1,34 @@
+/*
+This file is part of HOBAK.
+
+Permission is hereby granted to use this software solely for non-commercial applications
+and purposes including academic or industrial research, evaluation and not-for-profit media
+production.
+ 
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL PIXAR OR ITS AFFILIATES, YALE, OR
+THE AUTHORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+#ifndef FILE_IO_H
+#define FILE_IO_H
+
+#include "SETTINGS.h"
+#include "Timestepper/NEWMARK.h"
+#include "Scenes/SIMULATION_SCENE.h"
+#include "Scenes/JSON_SCENE.h"
+#include <document.h>
+
+namespace HOBAK {
+  void initializeSceneJSON(const SIMULATION_SCENE& scene);
+  void recordFrameToJSON(const SIMULATION_SCENE& scene);
+  
+  void writeSceneJSON(const char* filename);
+  bool readSceneJSON(const char* filename, JSON_SCENE& scene);
+};
+
+#endif

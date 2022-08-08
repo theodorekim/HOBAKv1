@@ -1,0 +1,6 @@
+LDFLAGS_COMMON = -lGL -lGLU -lglut -lstdc++ -fopenmp
+INCLUDES_COMMON = -I./ -I../ -I../../ -I../../ext/eigen-3.3.7 -I../../src/ -I../../src/util -I../../ext/spectra-0.8.1/include -I../../ext/rapidjson -I../../ext/glvu/ -I../../ext/rapidjson/ -I/opt/X11/include/ ${GLUT_PATH}
+
+# fixes the inline exceeded warnings
+CFLAGS_COMMON = -c -Wall -O3 -msse2 -std=c++11 -fopenmp
+CC = g++

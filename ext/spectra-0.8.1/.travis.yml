@@ -1,0 +1,36 @@
+branches:
+  only:
+    - master
+    - develop
+
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+dist: xenial
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-xenial-7
+    packages:
+      - g++-8
+      - clang-7
+
+before_install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-8"; fi
+  - if [ "$CXX" = "clang++" ]; then export CXX="clang++-7"; fi
+  - $CXX --version
+
+install:
+  - wget https://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz
+  - tar xzf 3.3.7.tar.gz
+  - mv eigen-eigen-323c052e1731/Eigen include/
+
+script:
+  - cd test
+  - make -j 2 all
+  - make test
